@@ -29,4 +29,7 @@ SYSCALL(getpid)
 SYSCALL(sbrk)
 SYSCALL(sleep)
 SYSCALL(uptime)
+SYSCALL(save_memory)
+SYSCALL(save_proc)
+SYSCALL(load_proc)
 

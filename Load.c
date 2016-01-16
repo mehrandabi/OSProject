@@ -67,21 +67,19 @@ int main()
 {
 	struct proc *p;
 	struct trapframe *tf;
-	
+	printf(1,"Loading...\n");
 	p = malloc(sizeof(struct proc));
 	tf = malloc(sizeof(struct trapframe));
 
 	int fd = open("STATE.bin", O_RDONLY);
 	if (read(fd, p, sizeof(struct proc)) < sizeof(struct proc))
-		printf(2, "everything went wrong\n");
+		printf(2, "write unsuccessfull\n");
 	if (read(fd, tf, sizeof(struct trapframe)) < sizeof(struct trapframe))
-		printf(2, "everything went wrong\n");
+		printf(2, "write unsuccessfull\n");
 	p->tf = tf;
-	printf(1, "we restore from addr: %p\n", p->tf->eip);
-	printf(1, "ready for restore on %d\n", fd);
 	close(fd);
 	
-	restore("STATE.bin", p);
+	load_proc("STATE.bin", p);
 
 	wait();
 	exit();

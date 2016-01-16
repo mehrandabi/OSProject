@@ -20,4 +20,7 @@
 #define SYS_link   19
 #define SYS_mkdir  20
 #define SYS_close  21
+#define SYS_load_proc 22
+#define SYS_save_memory 23
+#define SYS_save_proc 24
 

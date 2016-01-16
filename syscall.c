@@ -99,7 +99,7 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_save_memory(void);
-extern int sys_load_memory(void);
+extern int sys_save_proc(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,

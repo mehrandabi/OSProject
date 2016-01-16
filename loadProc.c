@@ -7,10 +7,11 @@
 #include "proc.h"
 #include "spinlock.h"
 
-static int load_proc(char *name, struct proc *p)
+static int load_proc(char *path, struct proc *p)
 {
 	int i;
 	struct proc np;
+	//an inode describes a single unnamed file
 	struct inode *ip;
 	begin_op();
 	if ((ip = namei(path)) == 0) {
@@ -39,12 +40,10 @@ static int load_proc(char *name, struct proc *p)
 	proc->sz = PGROUNDUP(np.sz);
 	*proc->tf = *np.tf;
 	
-	cprintf("set %d state running from %p\n", proc->pid, np.tf->eip);
 	switchuvm(proc);
 	
 	return 0;
 }
-
 int sys_load_proc(void)
 {
 	char *name = 0;
@@ -55,3 +54,5 @@ int sys_load_proc(void)
 		return -1;
 	return load_proc(name, (struct proc *)p);
 }
+
+
