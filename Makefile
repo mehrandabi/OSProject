@@ -172,8 +172,8 @@ UPROGS=\
 	_usertests\
 	_wc\
 	_zombie\
-	_saveProc\
-	_loadProc\
+	_Save\
+	_Load\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

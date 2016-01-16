@@ -23,7 +23,9 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-
+int save_proc(struct proc *);
+int save_memory(void *,uint sz);
+int load_proc(char *,struct proc *);
 
 // ulib.c
 int stat(char*, struct stat*);
